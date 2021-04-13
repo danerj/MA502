@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+
+\title{MA 502 Homework 4}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 1}
+
+Prove that the set of skew $n\times n$ real matrices,
+
+$$S = \{A \in \mathbb{R}^{n\times n} \; | \; A^T = -A\} \, ,$$
+
+is a subspace of the space of all $n \times n$ real matrices. Here we define the matrix $A^T = \{a_{ij}^T\}$ such that for the $i,j$ entry of $A$, $a_{ij}^T = a_{ji}$.\\
+
+Since $S$ is a subset of $\mathbb{R}^{n\times n}$, we prove that $S$ is a subspace of $\mathbb{R}^{n\times n}$ by checking that $S$ is closed under addition and scalar multiplication (inheriting the same operations from $\mathbb{R}^{n\times n}$) and that $S$ contains the zero vector of $\mathbb{R}^{n \times n}$. \\
+
+First, the zero vector of $\mathbb{R}^{n\times n}$ is the $n\times n$ zero matrix, which we denote $0_{n \times n}$. Since all entries are the real number 0, and $0 = -0$, it is immediate that $0_{n\times n}^T = -0_{n\times n}$ so that $0_{n\times n} \in S$.\\
+
+Let $A,B \in S$. This means that $A^T = -A$ and $B^T = -B$. We have $(A+B)^T = A^T + B^T = -A + -B =-1A + -1B= -1(A+B) = -(A+B)$, so we conclude that $A+B \in S$. \\
+
+Let $k \in \mathbb{R}$ and $A \in S$. Then $(kA)^T = kA^T = k(-A) = k(-1)(A) = -kA$. So it is also the case that if $A \in S$ that $kA \in S$. This finishes the proof that $S$ is a subspace of $\mathbb{R}^{n\times n}$.  
+
+\section*{Exercise 2}
+
+Consider the map $T : \mathbb{P}_3 \rightarrow \mathbb{P}_2$ given by $T(p) = p' \in \mathbb{P}_2$ for $p \in \mathbb{P}_3$. We will find the range and nullspace of $T$. \\
+
+Let $q \in \mathbb{P}_2$. Then $q$ is of the form $q(x) = ax^2 + bx + c$, where $a,b,c \in \mathbb{R}$. If we set $p(x) = \frac{a}{3}x^3 + \frac{b}{2}x^2 + cx + d$, where $d \in \mathbb{R}$ may be chosen arbitrarily, then it is the case that $p \in \mathbb{P}_3$ and that $T(p) = p' = q$. Since $q$ was arbitrary in $\mathbb{P}_2$, we have shown that the range of $T$ is all of $\mathbb{P}_2$. That is, $\mathcal{R}(T) = \mathbb{P}_2$. \\
+
+The nullspace of $T$ is the set of all constant polynomials in $\mathbb{P}_3$ since if $p(x) = d$, with $d \in \mathbb{R}$, then $p'(x) = 0$, which acts as the zero vector in $\mathbb{P}_2$. Therefore $\mathcal{N}(T) = \{p \in \mathbb{P}_3 \; | \; p(x) = d, \; d \in \mathbb{R}\}$. 
+
+\section*{Exercise 3}
+
+Let $A$ be an $n\times n$ matrix with real coefficients and let $T_A : \mathbb{R}^n \rightarrow \mathbb{R}^n$ be the linear operator given by $T_A(x) = Ax$ for $x \in \mathbb{R}^n$. Prove that the range of $T_A$ is the same set as span of the columns of $A$, that is, $\mathcal{R}(T_A) = \text{col}(A)$ (we use $\text{col}(A)$ to denote the column space of $A$).\\
+
+Let $y \in \mathcal{R}(T_A)$. This means that there exists some $x \in \mathbb{R}^n$ such that $T_A(x) = y$. But since $T_A(x) = Ax$, it is immediate that $y = Ax$, which means that $y \in \text{col}(A)$. Thus $\mathcal{R}(T_A) \subseteq \text{col}(A)$. \\
+
+Let $v \in \text{col}(A)$. This means that there exists some $u \in \mathbb{R}^n$ such that $v = Au$. But since $Au = T_A(u)$, we see that $v = T_A(u)$ and so $v \in \mathcal{R}(T_A)$. Therefore $\text{col}(A) \subseteq \mathcal{R}(T_A)$. \\
+
+Since both $\mathcal{R}(T_A) \subseteq \text{col}(A)$ and $\text{col}(A) \subseteq \mathcal{R}(T_A)$, we conclude that $\text{col}(A) = \mathcal{R}(T_A)$ as desired.
+
+\section*{Exercise 4}
+
+Let $T: \mathbb{R}^n \rightarrow \mathbb{R}^n$ be a linear operator and for each $k \in \mathbb{N}$, we define $T^k$ to be the composition of $T$ with itself $k$ times. \\
+
+\noindent{(i)}\\
+
+First we prove that for each $k \in \mathbb{N}$, $\mathcal{R}(T^{k+1}) \subseteq \mathcal{R}(T^k)$. Let $y \in \mathcal{R}(T^{k+1})$. Then it is the case that $y = T^{k+1}(x)$ for some $x \in \mathbb{R}^n$. By definition of composition of maps, it is also the case that $T^{k+1}(x) = T^k(T(x))$. Since $T :\mathbb{R}^n \rightarrow \mathbb{R}^n$ we see that $T(x) = z$ for some $z \in \mathbb{R}^n$. But then we have $y = T^k(z)$ for $z \in \mathbb{R}^n$. This shows that $y \in \mathcal{R}(T^k)$. Therefore, since this argument holds for any choice of $k \in \mathbb{N}$ (even the case that $k = 1$), we conclude that $\mathcal{R}(T^{k+1}) \subseteq \mathcal{R}(T^k)$ as was claimed.\\
+
+\noindent{(ii)}\\
+
+Next we show that there exists a positive integer $m$ such that for all $k \geq m$ that $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$.\\
+
+\underline{Lemma:} Let $f: A \rightarrow B$ and $g : B \rightarrow C$ be functions. If both $f$ and $g$ are surjective then the composition $h = g \circ f: A \rightarrow C$ is also a surjective function.
+
+\begin{proof}
+Let $z \in C$. Since $g$ is surjective there exists $y \in B$ such that $g(y) = z$. Since $y \in B$ and $f$ is surjective there exists $x \in A$ such that $f(x) = y$. Then $h(x) = g(f(x)) = g(y) = z$. Since $z \in C$ was arbitrary, this shows that $g \circ f$ is a surjective function.
+\end{proof}
+
+Note that although $T:\mathbb{R}^n \rightarrow \mathbb{R}^n$, we may only define $T^{k+1}$ on the range of $T^k$ (or on some more restrictive subset of the range of $T^k$). That is, the most inclusive domain we may use to define $T^{k+1}$ is such that $T^{k+1} : \mathcal{R}(T^k) \rightarrow \mathbb{R}^n$.\\
+
+If $T$ is surjective, then $\mathcal{R}(T) = \mathbb{R}^n$. Then $T^2 : \mathbb{R}^n \rightarrow \mathbb{R}^n$ and since $T^2 = T \circ T$ we conclude by the lemma above that $T^2$ is surjective and so $\mathcal{R}(T^2) = \mathbb{R}^n$. We apply this reasoning inductively to see that since $T^{k+1} = T^k \circ T$ is surjective that $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^{k}) = \mathbb{R}^n$ for all positive integers $k$ such that $k \geq 1$.\\
+
+If $T$ is not surjective, then the range of $T$ is a proper subset of $\mathbb{R}^n$. It is also the case that since $T^{k+1}(x) = T^k(T(x))$ for any $x \in \mathbb{R}^n$ for which $T^{k+1}$ is defined, $\mathcal{R}(T^{k+1}) \subseteq \mathcal{R}(T^k)$.
+
+Since $T$ is not surjective, $\mathcal{R}(T) \subset \mathbb{R}^n$ (meaning $\mathcal{R}(T) \subseteq \mathbb{R}^n$ and $\mathcal{R}(T) \neq \mathbb{R}^n$). Then $\text{dim} \, \mathcal{R}(T) \leq n-1$. Consider $T^2 : \mathcal{R}(T) \rightarrow \mathbb{R}^n$. If $\mathcal{R}(T^2) = \mathcal{R}(T)$ then we may conclude that $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$ for all $k \geq 1$ (*). Otherwise if $\mathcal{R}(T^2) \subset \mathcal{R}(T)$, then $\text{dim} \, \mathcal{R}(T^2) < \text{dim} \, \mathcal{R}(T) \leq n-1$. Therefore $\text{dim} \, \mathcal{R}(T^2) \leq n-2$. In this case we next consider $T^3 : \mathcal{R}(T^2) \rightarrow \mathbb{R}^n$. Similar to before, we conclude that if $\mathcal{R}(T^3) = \mathcal{R}(T^2)$ then $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$ for all integers $k \geq 2$. Otherwise, we have $\text{dim} \, \mathcal{R}(T^3) \leq n-3$. We continue this process for $3 \leq m < n$. At each step, if $\mathcal{R}(T^{m+1}) = \mathcal{R}(T^{m})$, then we conclude that $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^{k})$ for all $k \geq m$. If this does not occur for $3 \leq m < n$, consider $T^{n+1} : \mathcal{R}(T^n) \rightarrow \mathbb{R}^n$. At this step we have arrived at $\text{dim} \, \mathcal{R}(T^n) \leq n-n = 0$. Since it must be that $\text{dim} \, \mathcal{R}(T^n)\geq 0$, we conclude that $text{dim} \, \mathcal{R}(T^n) = 0$. Thus $\mathcal{R}(T^n) = \{0 \in \mathbb{R}^n\}$. But this means that $T^{n+1} : \{0\} \rightarrow \mathbb{R}^n$ so that $\mathcal{R}(T^{n+1}) = \{0\}$ as well. It must also be the case that $\mathcal{R}(T^{m}) = \{0\}$ for all $m >n+1$. Thus we may conclude that although it may be true that $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$ for all $k \geq m$ for some $m < n$, it is certainly the case $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$ for all $k \geq n$. \\
+
+(*) We claim that if $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^k)$, then it must follow that $\mathcal{R}(T^{k+2}) = \mathcal{R}(T^{k+1})$. Note that $T^{k+2} : \mathcal{R}(T^{k+1}) \rightarrow \mathbb{R}^n$, or equivalently (by our initial assumption) $T^{k+2} : \mathcal{R}(T^{k}) \rightarrow \mathbb{R}^n$ just as $T^{k+1} : \mathcal{R}(T^k) \rightarrow \mathbb{R}^n$. It must be the case that $\mathcal{R}(T^{k+2}) \subseteq \mathcal{R}(T^{k+1})$. Because $T^{k+2} = T\circ T^{k+1}$ it is also the case that $\mathcal{R}(T^{k+2}) \supseteq \mathcal{R}(T^{k+1})$ since $\mathcal{R}(T) \supset \mathcal{R}(T^{k+1})$. So $\mathcal{R}(T^{k+1}) = \mathcal{R}(T^{k+2})$.  
+
+\section*{Exercise 5}
+
+Let $A,B \in \mathbb{R}^{n \times n}$ such that $AB = 0$. If we use $T_A$ and $T_B$ to denote the linear operators associated with the matrices $A$ and $B$ respectively, we prove that $$\mathcal{R}(T_A) + \mathcal{R}(T_B) \leq n \,.$$
+
+We start with the fact that $$\text{dim} \,\mathcal{R}(T_A) + \text{dim} \,\mathcal{N}(T_A) = n$$
+must hold in any case. Since $AB = 0$, it is also the case that $\mathcal{R}(T_B) \subseteq \mathcal{N}(T_A)$. To see this, suppose that $\mathcal{R}(T_B) \not\subseteq \mathcal{N}(T_A)$. Then there exists some $x \in \mathbb{R}^n$ such that $T_B(x) = y \in \mathbb{R}^n$ but for which $T_A(y) \neq 0$. But then since the matrix multiplication $AB$ corresponds to the composition $T_A \circ T_B$, this implies that $ABx = Ay \neq 0$. This is a contradiction since the $ABx = 0x = 0$ for all $x \in \mathbb{R}^n$. Since $\mathcal{R}(T_B) \subseteq \mathcal{N}(T_A)$, we have $\text{dim} \,\mathcal{R}(T_B) \leq \text{dim} \, \mathcal{N}(T_A)$. Therefore,
+
+$$n = \text{dim} \,\mathcal{R}(T_A) + \text{dim} \,\mathcal{N}(T_A) \geq \text{dim} \,\mathcal{R}(T_A) + \text{dim} \,\mathcal{R}(T_B)\,. $$
+
+\end{document}

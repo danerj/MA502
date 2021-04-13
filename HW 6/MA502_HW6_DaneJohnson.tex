@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+
+\title{MA 502 Homework 6}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+Assume that $A$ is a $4 \times 4$ matrix with eigenvalues $\lambda_1 = 1, \lambda_2 = 0, \lambda_3 = 2,$ and $\lambda_4 = -1$. \\
+
+Claim: $A$ is not invertible.\\
+
+Proof: Since $\lambda_2 = 0$ is an eigenvalue of $A$, then $$0 = \text{det}(A-\lambda_2I) = \text{det}(A-0I) = \text{det}(A) \;.$$
+
+This shows that $\text{det}(A) = 0$, so we conclude that $A$ is not invertible.\\
+
+Claim: $A$ is diagonalizable. \\
+
+Proof: Consider the linear transformation $T: \mathbb{R}^4 \rightarrow \mathbb{R}^4$ defined by $T(x) = Ax$. We know that $T$ has four distinct eigenvalues since for each eigenvalue $\lambda$ of the matrix $A$, with corresponding eigenvector $v$, $T(v) = Av = \lambda v$. Since $T$ has four distinct eigenvalues we can find four distinct eigenvectors. Therefore, $T$ is a diagonalizable transformation, so $A$ must be a diagonalizable matrix. \\
+
+The characteristic polynomial of $A$ is $p(\lambda) = \lambda(\lambda - 1)(\lambda - 2)(\lambda + 1)$ since for this polynomial, $p(\lambda) = 0$ precisely when $\lambda \in \{\lambda_1,\lambda_2,\lambda_3,\lambda_4\}$ and the degree of $p$ does not exceed 4. The trace of $A$, $\text{tr}(A) = \lambda_1 + \lambda_2 + \lambda_3 + \lambda_4 = 2$. Since we know that $A$ is not invertible, $\text{det}(A) = 0$. It is also the case that since the determinant of $A$ is the product of the eigenvalues of $A$, we could also verify this statement by calculating $\text{det}(A) = \lambda_1\lambda_2\lambda_3\lambda_4 = 0$. 
+
+\section{}
+
+Assume that $A$ is a nonsingular matrix and that $\lambda$ is an eigenvalue of $A$. We know that $\lambda \neq 0$ since if $\lambda = 0$ is an eigenvalue of $A$, then $A$ is singular by the previous exercise. Suppose that $v$ is an eigenvector corresponding to the eigenvalue $\lambda$. Then,
+
+\begin{align*}
+Av &= \lambda v \\
+A^{-1}Av &= A^{-1} \lambda v\\
+v &= \lambda A^{-1} v\\
+\frac{1}{\lambda}v &= A^{-1}v \;.
+\end{align*}
+
+Since each of these steps is reversible, this shows that $\lambda$ is and eigenvalue of $A$ if and only if $\lambda^{-1}$ is an eigenvalue of $A^{-1}$. 
+
+\section{}
+
+Suppose that $\lambda$ is an eigenvalue of the matrix $A$. Then for an eigenvector $v$ corresponding to $\lambda$, 
+
+\begin{align*}
+Av &= \lambda v \implies \\
+A^2v &= A\lambda v = \lambda Av = \lambda^2v \;.
+\end{align*}
+
+This shows that if $\lambda$ is an eigenvalue of $A$, then $\lambda^2$ is an eigenvalue of $A^2$. \\
+
+Suppose that $\lambda^2$ is an eigenvalue of $A^2$ and that $v$. This means that $$0 = \text{det}(A^2 - \lambda^2I) = \text{det}[(A-\lambda I)(A+\lambda I)] = \text{det}(A - \lambda I) \text{det}(A+ \lambda I) \;.$$
+
+So we may conclude that if $\lambda^2$ is an eigenvalue of $A^2$, then $\lambda$ is an eigenvalue of $A$ or $-\lambda$ is an eigenvalue of $A$. This is the strongest statement we can make without further assumptions - it is not necessarily the case that both $\lambda$ and $-\lambda$ must be eigenvalues of $A$. To see this consider:
+
+$$A^2 = \begin{pmatrix}
+4 & 0 \\ 0 & 0
+\end{pmatrix} \quad A =\begin{pmatrix}
+2 & 0 \\ 0 & 0
+\end{pmatrix} \;.$$
+
+Then 4 is an eigenvalue of $A^2$ but $-2$ is not an eigenvalue of $A$. 
+
+\section{}
+
+(a) The matrix $$A = \begin{pmatrix}
+1 & 1 & 0 & 0 \\ 0 &1 &0 &0 \\ 0&0&2&0 \\ 0&0&0&3
+\end{pmatrix}$$
+
+has eigenvalue $\lambda_1 = 1$ with algebraic multiplicity 2 and geometric multiplicity 1, eigenvalue $\lambda_2 = 2$ with algebraic and geometric multiplicities both of 1, and eigenvalue $\lambda_3$ with algebraic and geometric multiplicities 1 as well. 
+
+(b) It is not possible to construct a matrix such that the geometric multiplicity of an eigenvalue exceeds the algebraic multiplicity of the same eigenvalue. Here we are given that the eigenvalue $\lambda_1 = 1$ should have algebraic multiplicity 1 and geometric multiplicity 2. No matrix can satisfy this requirement. \\
+
+(c) It is not possible to construct a $4\times 4$ matrix such that the sum of the algebraic multiplicities of the eigenvalues of the matrix exceed 4. A $4\times 4$ matrix can be used as a linear transformation with a 4-dimensional domain. The sum of the algebraic multiplicities of the eigenvalues must not be larger than the dimension of the domain of such a transformation. Here we require that the algebraic multiplicities of the eigenvalues sum to 5. This is not possible.\\
+
+(d) The matrix
+$$D = \begin{pmatrix}
+\pi&\pi&\pi&\pi\\0&\pi&\pi&\pi\\0&0&\pi&\pi\\0&0&0&\pi
+\end{pmatrix}$$
+
+has eigenvalue $\lambda = \pi$, where $\lambda$ has algebraic multiplicity 4 and geometric multiplicity 1.
+
+\section{}
+
+Consider the matrix
+
+$$ A = \begin{pmatrix}
+1&1&0\\0&1&0\\1&0&1
+\end{pmatrix} \begin{pmatrix}
+\pi&0&0\\0&\pi^2&0 \\ 0&0&\pi^3
+\end{pmatrix} \begin{pmatrix}
+1&1&0\\0&1&0\\1&0&1
+\end{pmatrix}^{-1} = \begin{pmatrix}
+\pi & \pi^2-\pi & 0 \\ 0&\pi^2&0 \\ \pi-\pi^3 & \pi^3-\pi & \pi^3
+\end{pmatrix}\;.$$
+
+Then we have
+
+$$A \begin{pmatrix} 1\\0\\1 \end{pmatrix} =  \begin{pmatrix} \pi\\0\\\pi \end{pmatrix} = \pi \begin{pmatrix} 1\\0\\1 \end{pmatrix}$$
+
+$$A \begin{pmatrix} 1\\1\\0 \end{pmatrix} =  \begin{pmatrix} \pi^2\\\pi^2\\0 \end{pmatrix} = \pi^2 \begin{pmatrix} 1\\1\\0 \end{pmatrix}$$
+
+$$A \begin{pmatrix} 0\\0\\1 \end{pmatrix} =  \begin{pmatrix} 0\\0\\\pi^3 \end{pmatrix} = \pi^3 \begin{pmatrix} 0\\0\\1 \end{pmatrix}$$
+
+as desired. Note that $(1,0,1), (1,1,0), (0,0,1)$ form a basis for $\mathbb{R}^3$ since they form a collection of three linearly independent vectors in $\mathbb{R}^3$. The transformation $T_A : \mathbb{R}^3 \rightarrow \mathbb{R}^3$, $T_A(x) = Ax$ is uniquely determined by specifying its values on a basis for $\mathbb{R}^3$. So the corresponding matrix $A$ is the only $3\times 3$ matrix with the given eigenvalue/eigenvector pairs. 
+
+\end{document}

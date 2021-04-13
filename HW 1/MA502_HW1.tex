@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{MA 502 Homework 1}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 1}
+$\quad$ Consider the space
+$ V = \{v = (v_1,\, ... \,, v_n) \in \mathbb{R}^n \; | \; v = \nabla f(0) \text{ for some function } f \in C^1(\mathbb{R}^n) \text{ defined in a neighborhood of the origin} \}$ \\
+
+(1) Prove that $V$, equipped with the usual vector sum and scalar multiplication operations, is a vector space.\\
+
+To prove this statement, we verify that all the vector space axioms hold. (Note: I realize that much effort could be saved if we first just notice that $V \subseteq \mathbb{R}^n$ and then verify that $V$ is closed under vector addition and multiplication by a scalar but perhaps this was not the intent of the exercise and I also didn't notice this until after checking all vector space axioms manually).\\
+
+\underline{Proof} \\
+
+Let $u,v,w \in V$. By definition of the set $V$ there exist functions $f,g,h : \mathbb{R}^n \rightarrow \mathbb{R}$ with each function continuously differentiable and defined in a neighborhood of the origin such that $u = \nabla f(0), v = \nabla g(0), $ and $ w = \nabla h(0)$. \\
+
+\textbf{VS 1} 
+\begin{align*}
+(u + v) + w &= (\nabla f(0) + \nabla g(0) ) + \nabla h(0)\\
+&= \left[(\partial_1 f(0),...,\partial_n f(0) ) + (\partial_1 g(0),..., \partial_n g(0))\right] +(\partial_1 h(0),..., \partial_n h(0)) \\
+&=\left[(\partial_1 f(0) + \partial_1 g(0),...,\partial_n f(0)+\partial_n g(0) ) \right] +(\partial_1 h(0),..., \partial_n h(0)) \\
+&=(\partial_1 f(0) + \partial_1 g(0),...,\partial_n f(0)+\partial_n g(0) ) + (\partial_1 h(0),..., \partial_n h(0))\\
+&= (\partial_1 f(0) + \partial_1 g(0) + \partial_1 h(0),...,\partial_n f(0)+\partial_n g(0)+\partial_n h(0) )\\
+&=(\partial_1 f(0) + (\partial_1 g(0) + \partial_1 h(0)),...,\partial_n f(0)+(\partial_n g(0)+\partial_n h(0)))\\
+&=(\partial_1 f(0),...,\partial_n f(0)) + (\partial_1 g(0) + \partial_1 h(0),...,\partial_n g(0) + \partial_n h(0))\\
+&=(\partial_1 f(0),...,\partial_n f(0)) + \left[(\partial_1 g(0),...,\partial_n g(0)) + (\partial_1 h(0),...,\partial_n h(0))\right]\\
+&= \nabla f(0) + (\nabla g(0)  + \nabla h(0))\\
+&=u + (v+w)\,.
+\end{align*}
+
+\textbf{VS 2}\\
+
+Let $i : \mathbb{R}^n \rightarrow \mathbb{R}$, $i(x_1,...,x_n) = 0$. Then $\nabla i = (0,....,0)$ and in particular $\nabla i(0) = (0,...,0)$. Define the vector $O = (0,...,0) \in \mathbb{R}^n$. Then it is the case that $O = \nabla i(0)$, so that $O \in V$. We claim that $O$ is the additive identity of $V$. To see this note that
+\begin{align*}
+u + O &= (\partial_1 f(0),...,\partial_n f(0)) + (0,...,0)\\ &= (\partial_1 f(0) + 0,..., \partial_n f(0) +0)\\ &=  (0+\partial_1 f(0),...,0 +\partial_n f(0)) = O + u
+\end{align*}
+
+$$
+O+u = (0+\partial_1 f(0),...,0 +\partial_n f(0)) = (\partial_1 f(0),...,\partial_n f(0)) = u\,.
+$$
+
+Therefore $O \in V$ and since $u$ was arbitrary $O+u = u+O = u$ for any choice of $u \in V$.\\
+
+\textbf{VS 3}\\
+
+Given $u = \nabla f(0)$, let $-u = -\nabla f(0)$. Then it is the case that $-u \in V$ and we have
+
+$$ u + (-u) = \nabla f(0) - \nabla f(0) = (\partial_1 f(0) - \partial_1 f(0),..., \partial_n f(0) - \partial_n f(0)) = (0,...,0) = O\,.$$
+
+\textbf{VS 4}\\
+
+Given $u,v \in V$, with $u = \nabla f(0), v = \nabla g(0)$, we have
+
+\begin{align*}
+u+v &= (\partial_1 f(0),...,\partial_n f(0)) + (\partial_1 g(0),...,\partial_n g(0))\\ &= (\partial_1 f(0) + \partial_1 g(0),..., \partial_n f(0) + \partial_n g(0))\\
+&= (\partial_1 g(0) + \partial_1 f(0),..., \partial_n g(0) + \partial_n f(0))\\
+&= v+u\,.
+\end{align*}
+
+\textbf{VS 5}\\
+
+Let $c$ be a scalar (we assume the field in this exercise is the field of real numbers). Then
+
+\begin{align*}c[u+v] &= c[(\partial_1 f(0) + \partial_1 g(0),..., \partial_n f(0) + \partial_n g(0))]\\
+&= (c\partial_1 f(0) + c\partial_1 g(0),..., c\partial_n f(0) + c\partial_n g(0))\\
+&= (c\partial_1 f(0),..., c\partial_n f(0)) + (c\partial_1 g(0),..., c\partial_n g(0))\\
+&= c(\partial_1 f(0),..., \partial_n f(0)) + c(\partial_1 g(0),..., \partial_n g(0)) \\
+&= cu+cv\,.
+\end{align*}
+
+\textbf{VS 6}\\
+
+If $a$ and $b$ are two numbers, then
+
+\begin{align*}
+(a+b)u &= ((a+b)\partial_1 f(0),..., (a+b) \partial_n f(0)) \\
+&= (a\partial_1 f(0) + b\partial_1 f(0),..., a\partial_n f(0) + b \partial_n f(0))\\
+&= (a\partial_1 f(0),...,a\partial_n f(0))+(b\partial_1 f(0),...,b\partial_n f(0))\\
+&=a(\partial_1 f(0),...,\partial_n f(0))+b(\partial_1 f(0),...,\partial_n f(0))\\
+&= au + bu\,.
+\end{align*}
+
+\textbf{VS 7}\\
+
+If $a$ and $b$ are two numbers, then
+\begin{align*}
+(ab)u &= ((ab)\partial_1 f(0),...,(ab)\partial_n f(0))\\ &= (a(b\partial_1f(0)),...,a(b\partial_n f(0)))\\ &= a(b\partial_1f(0),...,b\partial_n f(0))\\
+&= a(bu)\,.
+\end{align*}
+
+\textbf{VS 8}\\
+
+Using the arbitrary element $u \in V$, we have
+$$1u = 1(\partial_1 f(0),..., \partial_n f(0)) = (1\partial_1 f(0),..., 1\partial_n f(0)) = (\partial_1 f(0),...,\partial_n f(0)) = u$$
+
+We conclude that the space $V$ is a vector space.\\
+
+(2) Prove that $V = \mathbb{R}^n$.\\
+
+Let $v \in V$. There exists a function $f : \mathbb{R}^n \rightarrow \mathbb{R}$ such that $v = \nabla f(0) = (\frac{\partial f}{\partial x_1} (0), ... ,\frac{\partial f}{\partial x_n}(0)) =(\partial_1 f(0),...,\partial_n f(0))$. Since $f$ maps from $\mathbb{R}^n$ to $\mathbb{R}$, it is also the case that $\frac{\partial f}{\partial x_i} : \mathbb{R}^n \rightarrow \mathbb{R}$ for $i = 1,2,...,n$. But this means that when evaluating the partial derivatives we have $\frac{\partial f}{\partial x_i}(0) \in \mathbb{R}$ for $i = 1,2,..,n$ so that $v = (\frac{\partial f}{\partial x_1} (0), ... ,\frac{\partial f}{\partial x_n}(0)) =(\partial_1 f(0),...,\partial_n f(0)) \in \mathbb{R}^n$. Therefore, $V \subseteq \mathbb{R}^n$.\\
+
+Let $P = (c_1,c_2,...,c_n) \in \mathbb{R}^n$. Consider the function $g : \mathbb{R}^n \rightarrow \mathbb{R}$ given by the rule $g(x_1,x_2,...,x_n) = c_1x_1 + c_2x_2+...+c_nx_n$. Then we have $\nabla g = (c_1,...,c_n)$, which means $\nabla g(0) = (c_1,...,c_n)$ as well. If we define $w = \nabla g(0)$ we see that since $g$ is defined in any neighborhood of zero and is continuously differentialable that $P = (c_1,...,c_n) = w \in V$. Therefore $\mathbb{R}^n \subseteq V$.\\
+
+Since $V \subseteq \mathbb{R}^n$ and $\mathbb{R}^n \subseteq V$ we conclude that $V = \mathbb{R}^n$.
+
+\section*{Exercise 2}
+
+Let $\mathbb{V}$ be a vector space over the field $K$. If $\mathbb{X}$ and $\mathbb{Y}$ are subspaces of $\mathbb{V}$, then the intersection $\mathbb{X} \cap \mathbb{Y}$ is also a subspace of $\mathbb{V}$.\\
+
+Proof: To prove that $\mathbb{X} \cap \mathbb{Y}$ is a subspace of $\mathbb{V}$, it suffices to show that $\mathbb{X} \cap \mathbb{Y}$ is a subset of $\mathbb{V}$ that is closed under scalar multiplication and vector addition.\\
+
+Since $\mathbb{X} \cap \mathbb{Y}\subseteq \mathbb{X}$ and $\mathbb{X} \subseteq \mathbb{V}$, we have $\mathbb{X} \cap \mathbb{Y} \subseteq \mathbb{V}$. \\
+
+Let $u,v \in \mathbb{X} \cap \mathbb{Y}$. Then $u,v \in \mathbb{X}$. Since $\mathbb{X}$ is a subspace of $\mathbb{V}$, $\mathbb{X}$ is itself a vector space, so that it must be the case that $u + v \in \mathbb{X}$. Similarly, we know that $u,v \in \mathbb{Y}$ and that $\mathbb{Y}$ is also a vector space. Thus, $u + v \in \mathbb{Y}$. We have therefore shown that $u + v \in \mathbb{X}\cap \mathbb{Y}$.\\
+
+Let $k \in K$ and $w \in \mathbb{X}\cap \mathbb{Y}$. Since $w \in \mathbb{X}$ and $\mathbb{X}$ is a vector space, we may conclude that $kw \in \mathbb{X}$ (vector spaces are closed under scalar multiplication). Similarly, since $w \in \mathbb{Y}$ and $\mathbb{Y}$ is a vector space we have that $kw \in \mathbb{Y}$. Therefore $kw \in \mathbb{X} \cap \mathbb{Y}$.\\
+
+Since $\mathbb{X} \cap \mathbb{Y}$ is a subset of $\mathbb{V}$ and is closed under vector addition and scalar multiplication, we conclude that $\mathbb{X} \cap \mathbb{Y}$ is a subspace of $\mathbb{V}$.\\
+
+Note: The textbook mentions that we must show that $\mathbb{X} \cap \mathbb{Y}$ contains the zero vector of the space $\mathbb{V}$ but this actually follows from the fact that $\mathbb{X} \cap \mathbb{Y}$ is closed under scalar multiplication (use the identity element of the field $K$ as the scalar).
+
+\section*{Exercise 3}
+
+Consider
+
+$$\mathbb{X} = \{x = (x_1,x_2,x_3) \; | \; \ a_1x_1 + a_2x_2 + a_3x_3 = 0\}$$
+
+$$\mathbb{Y} = \{x = (x_1,x_2,x_3) \; | \; \ b_1x_1 + b_2x_2 + b_3x_3 = 0\}$$
+
+$$\text{where } a_i,b_i \in \mathbb{R} \text{ for } i = 1,2,3 \;.$$
+
+(1)\\
+
+To prove that $\mathbb{X}$ and $\mathbb{Y}$ are vector spaces we just prove the case for $\mathbb{X}$ since the proof for $\mathbb{Y}$ is identical if we replace the $'a'$ coefficients with $'b'$ coefficients. \\
+
+Instead of verifying each vector space axiom, we instead first note that $\mathbb{X} \subseteq \mathbb{R}^3$. Since $\mathbb{R}^3$ is already known to be a vector space, it suffices to show that $\mathbb{X}$ is closed under vector addition and scalar multiplication (with $\mathbb{X}$ inheriting the usual operations for the vector space $\mathbb{R}^3)$.\\
+
+Let $x,y \in \mathbb{X}$ with $x = (a_1x_1, a_2x_2, a_3x_3)$ and $y = (a_1y_1,a_2y_2, a_3y_3)$ and let $k \in \mathbb{R}$. We have
+
+$$ x+y = (a_1x_1 + a_1y_1, a_2x_2 + a_2y_2, a_3x_3 + a_3y_3)\;.$$
+
+To see that $x+y \in \mathbb{X}$, note that
+
+$$ a_1x_1 + a_1y_1 + a_2x_2 + a_2y_2 + a_3x_3 + a_3y_3 = a_1x_1 + a_2x_2 +a_3x_3 + a_1y_1 + a_2y_2 + a_3y_3 = 0 + 0 = 0 \;.$$
+
+Consider next $kx = (kc_1x_1, kc_2x_2, kc_3x_3)$. Since $kc_1x_1 + kc_2x_2 + kc_3x_3 = k(c_1x_1 + c_2x_2 + c_3x_3) = k(0) = 0$, we know $kx \in \mathbb{X}$. \\
+
+Since $\mathbb{X}$ is closed under scalar multiplication and vector addition, $\mathbb{X}$ is a subspace of $\mathbb{R}^3$ and therefore a vector space.\\
+
+(2)\\
+
+There are several geometric possibilities for $\mathbb{X}\cap \mathbb{Y}$ considering that although we know $a_1,a_2,a_3,b_1,b_2,$ and $b_3$ are real numbers we have not specified exactly which real numbers they are.\\
+
+In the case that both $\mathbb{X}$ and $\mathbb{Y}$ are planes, then by their definition they must both pass through the origin. If $a_i = b_i$ for each $i$, then these two planes are actually the same plane so that the intersection is also a plane. If the two planes are distinct then the intersection is a line in $\mathbb{R}^3$.
+
+It may also be the case that $a_1 = a_2 = a_3 = 0$ (or similarly with the $b_i$'s). If this is the case, then the geometric representation of $\mathbb{X}$ (or similarly $\mathbb{Y}$) is not a plane but in fact all of $\mathbb{R}^3$. If it is the case that $\mathbb{X}$ is all of $\mathbb{R}^3$ but $\mathbb{Y}$ is a plane then the intersection will be the plane that represents $\mathbb{Y}$. If it is the case that $a_i = b_i = 0$ for each $i$, then $\mathbb{X} = \mathbb{Y} = \mathbb{R}^3$ so that $\mathbb{X} \cap \mathbb{Y} = \mathbb{R}^3$.
+
+\textbf{We conclude that there are three possible geometric representations of $\mathbb{X}\cap\mathbb{Y}$: a line passing through the origin, a plane passing through the origin, or all of $\mathbb{R}^3$.}
+
+
+\textbf{Yes $\mathbb{X}\cap\mathbb{Y}$ is a vector space.} In part (1) of this exercise, we showed that both $\mathbb{X}$ and $\mathbb{Y}$ are both subspaces of the vector space $\mathbb{R}^3$. By the result of Exercise 2, we may conclude that $\mathbb{X}\cap \mathbb{Y}$ is also a subspace of $\mathbb{R}^3$ and therefore a vector space. We may also appeal to the geometric discussion we just provided: a line, a plane, or all of $\mathbb{R}^3$ are all subspaces of $\mathbb{R}^3$. Note that although the empty set $\emptyset$ is also a subspace of $\mathbb{R}^3$, it is never the case that $\mathbb{X}\cap \mathbb{Y} = \emptyset$ since the origin is an element of both sets no matter our choice of coefficients.
+
+\section*{Exercise 4}
+
+$\quad$ (1)\\
+
+The set $X = \{x \in \mathbb{R}^n \; | \; Ax = 0\}$, where $A$ is a given $m\times n$ matrix, \textbf{is} a subspace of the vector space $\mathbb{R}^n$.
+
+Let $x,y \in X$, so that $Ax = Ay = 0$. Then we have $A(x+y) = Ax +Ay = 0 + 0 = 0$, which shows that $x+y \in X$.
+
+Let $c \in \mathbb{R}$. We have $A(cx) = c(Ax) = c(0) = 0$, which shows that $cx \in X$. 
+Thus $X$ is a subspace of $\mathbb{R}^n$. \\
+
+(2)\\
+
+The set $X = \{p \in \mathbb{P} \; | \; p(x) = p(-x) \text{ for all } x\in \mathbb{R} \}$ \textbf{is} is a subspace of the vector space of all polynomials with real coefficients $\mathbb{P}$.
+
+Let $p,q \in X$. Then $(p+q)(x) = p(x) + q(x) = p(-x) + q(-x) = (p+q)(-x)$. Thus $p+q \in X$. 
+
+Let $k \in \mathbb{R}$. Then $kp(x) = kp(-x)$, which shows that if $p \in X$ it is also the case that $kp \in X$. Thus $X$ is a subspace of $\mathbb{P}$.\\
+
+(3)\\
+
+The set $X = \{p \in \mathbb{P} \; | \; p \text{ has degree less than or equal to } n\}$ \textbf{is} a subspace of $\mathbb{P}$.
+
+Let $p,q \in X$. Then $p$ and $q$ are polynomials of degree at most $n$. The result of summing of two polynomials of degree at most $n$ (to do this perform the real number sums of the corresponding coefficients of each polynomial as usual) must also be a polynomial of degree at most $n$. Therefore, $p+q \in X$.
+
+Let $k \in \mathbb{R}$. Then since the degree of $p \in X$ is at most $n$, the polynomial $kp$ is of degree at most $n$ (note that if $k=0$, then $kp$ is the zero polynomial, but this is still of degree less than $n$ no matter which of the common conventions we use for defining the degree of the zero polynomial - but it is impossible for $kp$ to be of higher degree than $p$). Thus $kp \in X$.
+
+Therefore $X$ is subspace of $\mathbb{P}$. \\
+
+(4)\\
+
+The set $X = \{f \in C[0,1] \; | \; f(1) = 2f(0)\}$ \textbf{is} a subspace of $C[0,1]$, where $C[0,1]$ is the set of all continuous functions on $[0,1]$. 
+
+Let $f,g \in X$, which means that $f$ and $g$ are continuous and that $f(1) = 2f(0), g(1) = 2g(0)$. Then we have
+$$(f+g)(1) = f(1) + g(1) = 2f(0) + 2g(0) = 2(f+g)(0) \;.$$
+
+This shows that $f+g \in X$
+
+Let $k \in \mathbb{R}$. Then for $f \in X$, since $f(1) = 2f(0)$ it follows that $kf(1) = k[2f(0)] = 2kf(0)$. Thus $kf \in X$ as well.
+
+Therefore $X$ is a subspace of $C[0,1]$.\\
+
+(5)\\
+
+The unit sphere in $\mathbb{R}^n$ \textbf{is not} a subspace of $\mathbb{R}^n$. Since the claim that the unit sphere in $\mathbb{R}^n$ is a subspace of $\mathbb{R}^n$ in the general case (that is, for any choice of $n$), it suffices to give a counterexample for $n = 2$. This counterexample is amenable to generalization if desired. 
+
+Let $(x_1,y_1), (x_2, y_2) \in U$, where $U$ is the unit sphere in $\mathbb{R}^2$. This means $x_1^2 + y_1^2 = 1$ and $x_2^2 + y_2^2 = 1$. We show that $U$ is not closed under vector addition. We define vector addition in the usual way, giving
+$$(x_1,y_1) + (x_2,y_2) = (x_1+x_2, y_1 + y_2) \;.$$
+
+However, we see that $$(x_1+x_2)^2 + (y_1 + y_2)^2 = x_1^2 + y_1^2 + x_2^2 + y_2^2 2x_1x_2 + 2y_1y_2 = 2 +  2x_1x_2 + 2y_1y_2\;.$$
+
+For $(x_1,y_1) + (x_2,y_2) \in U$, we would need $2 +  2x_1x_2 + 2y_1y_2 = 1$. To see why this does not hold generally, take $(x_1,y_1) = (1,0)$ and $(x_2,y_2) = (0,1)$. Then $(1,0) + (0,1) = (1,1) \notin U$.\\
+
+\section*{Exercise 5}
+
+(1)\\
+
+Let $X = \{(x_1,x_2) \; | \; x_1 + x_2 = 0\} \subseteq \mathbb{R} \times \mathbb{R}$. Then $X$ is a subspace of dimension 1. The element $(1,-1) \in X$ is a basis for $X$. The zero vector of $X$ is the element $(0,0)$. The only solution to the equation $c(1,-1) = (0,0)$ is the trivial case that $c = 0$. Thus the set $\{(1,-1)\}$ is then clearly a linearly independent set. To show that $(1,-1)$ generates $X$, let $(x_1, x_2) \in X$. Then we know that $x_1 + x_2 = 0 \implies -x_1 = x_2$, so that we may write $(x_1, x_2) = (x_1, -x_1)$. Since $x_1 \in \mathbb{R}$, which also happens to be our scalar field in this example, we take $x_1(1,-1) = (x_1,-x_1) = (x_1,x_2)$. Since this vector was an arbitrary element of $X$ we have shown that $(1,-1)$ generates $X$ and may conclude that $X$ is a subspace of dimension 1 with the element $(1,-1)$ as a basis for the subspace.\\
+
+(2) \\
+
+Let $M$ be the set of all $n \times n$ symmetric matrices with real entries with proposed field also the set $\mathbb{R}$. Then $M$ is a subspace of the vector space of all $n \times n$ real matrices. The dimension of $M$ is 6 and a basis for the subspace is 
+
+$$\left\{\begin{pmatrix}
+1&0&0\\
+0&0&0\\
+0&0&0
+\end{pmatrix}
+,
+\begin{pmatrix}
+0&0&0\\
+0&1&0\\
+0&0&0
+\end{pmatrix}
+\begin{pmatrix}
+0&0&0\\
+0&0&0\\
+0&0&1
+\end{pmatrix},
+\begin{pmatrix}
+0&1&0\\
+1&0&0\\
+0&0&0
+\end{pmatrix}
+,
+\begin{pmatrix}
+0&0&1\\
+0&0&0\\
+1&0&0
+\end{pmatrix},
+\begin{pmatrix}
+0&0&0\\
+0&0&1\\
+0&1&0
+\end{pmatrix}\right\}\;.
+$$
+Since it is not required by the exercise to rigorously prove these statements and the proof that this is a basis will be very tedious, the proof is omitted.\\
+
+(3)\\
+
+Let $Q = \{p \in \mathbb{P}_2 \; | \; p(0) = 0\} \subseteq \mathbb{P}_2$. Note that $p \in \mathbb{P}_2$ must be of the form $p(x)=k_2x^2 +k_1x + k_0$. If $p \in Q$ as well we require $0 = p(0) = k_0$. This shows that any $q \in Q$ must be of the form $q(x) = k_2x^2 + k_1x$. Then we see that $Q$ is a subspace of $\mathbb{P}_2$ of dimension 2 where we may use the set $\{x, x^2\}$ as a basis. This set is linearly independent and generates $Q$ so we may conclude that it is indeed a basis for the subspace. 
+
+\end{document}

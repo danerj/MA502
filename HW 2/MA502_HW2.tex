@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{MA 502 Homework 2}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 1}
+
+Consider the linear transformation $T : \mathbb{P}^3 \rightarrow \mathbb{P}^2$ defined by $T(p) = p'$. For $\mathbb{P}^3$ fix the basis $\{1+x,1-x,x+x^2, x^2 + x^3\}$ and for $\mathbb{P}^2$ use the canonical basis for $\mathbb{P}^2$. We want to find the matrix representation of $T$ with respect to these bases. \\
+
+A linear transformation is characterized by its effect on the set of basis vectors we have chosen, so we first perform these calculations.
+
+$$T(1+x) = 1(1) + 0(x) + 0(x^2)$$
+$$T(1-x) = -1(1) + 0(x) + 0(x^2)$$
+$$T(x+x^2) 1(1) + 2(x) + 0(x^2)$$
+$$T(x^2+x^3) = 0(1) + 2(x) + 3(x^2) \;.$$
+
+Since we are using the canonical basis for the codomain of this transformation, these calculations already show the coefficients of the resulting vectors with respect to the basis we have fixed for $\mathbb{P}^2$. So we take the coefficients above for use as columns in the matrix representation of the linear transformation. The matrix representation is then,
+
+$$\begin{pmatrix}
+1&-1&1&0\\ 0&0&2&2\\ 0&0&0&3
+\end{pmatrix}$$
+
+To check our work, let $p(x) = c_1(1+x) + c_2(1-x) + c_3(x+x^2) + c_4(x^2+x^3) \in \mathbb{P}^3$. We expect $T(p) = (c_1 - c_2 +c_3) + (2c_3 + 2c_4)x + 3c_4x^2$. Using the matrix,
+
+$$\begin{pmatrix}
+1&-1&1&0\\ 0&0&2&2\\ 0&0&0&3
+\end{pmatrix} \begin{pmatrix}
+c_1 \\ c_2 \\ c_3 \\ c_4
+\end{pmatrix} = \begin{pmatrix}
+c_1-c_2+c_3 \\ 2c_2 +2c_3 \\ 3c_4
+\end{pmatrix} \; . $$
+
+This is what we would expect for the transformation to look like in matrix representation.
+
+\section*{Exercise 2}
+
+Let us find the dimension of $\mathbb{S} = \text{span} \{v_1, v_2, v_3\} \subseteq \mathbb{R}^3$, where $$v_1 = (1,0,1), \quad v_2 = (1,1,0), \quad v_3 = (1,-1,2) \;.$$
+
+Some trial and error gives the equation $2v_1 - 1v_1 = v_3$ so that $2v_1 - 1v_1 - 1v_3 = 0$, where $ 0 = (0,0,0) \in \mathbb{R}^3$. Since we have found a nontrivial solution to the equation $\alpha_1v_1 + \alpha_2v_2 + \alpha_3v_3 = 0$, the vectors are dependent and since $v_3 \in \text{span}\{v_1,v_2\}$, $\text{span}\{v_1,v_2\} = \text{span}\{v_1,v_2,v_3\}$. Note further that $v_2 \notin \text{span}\{v_1\}$ or vice versa, \textbf{so we conclude that the dimension of $\text{span}\{v_1,v_2,v_3\}$ is equal to the dimension of $\text{span}\{v_1,v_2\}$, which is 2, and that $\{v_1,v_2\}$ is basis for $\mathbb{S}$.} \\
+
+To expand this basis to a basis for $\mathbb{R}^3$, try $v_4 = (0,0,1)$. To see if $\text{span}\{v_1,v_2,v_4\} = \mathbb{R}^3$, let $(x_1,x_2,x_3) \in \mathbb{R}^3$. Using matrix algebra we have
+
+$$\begin{pmatrix}
+1&1&0&x_1 \\ 0&1&0&x_2 \\ 1&0&1&x_3
+\end{pmatrix} \sim \begin{pmatrix}
+1&0&0&x_1-x_2 \\ 0&1&0&x_2 \\ 0&0&1&x_2 + x_3 - x_1
+\end{pmatrix} \;.$$
+
+So taking $\alpha_1 = x_1-x_2, \alpha_2 = x_2, \alpha_3 = x_2+x_3-x_1$, this implies that $(x_1,x_2,x_3) = \alpha_1v_1 + \alpha_2v_2 + \alpha_3v_4$. Therefore $\{v_1,v_2,v_4\}$ spans $\mathbb{R}^3$. 
+
+\section*{Exercise 3}
+
+Let $T: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ be the linear transformation given by the orthogonal projection of the vector $(x_1,x_2,x_3) \in \mathbb{R}^3$ onto the plane $x_2 =0$.\\
+
+(1) First we find the matrix representation of $T$. Since we seek to keep the first and third components of each vector unaffected by the transformation, but ensure that the second component becomes 0 under the transformation, we apply this requirement to each basis vector. Take the canonical basis for both the domain and codomain of $T$. Then we have $T((1,0,0)) = (1,0,0), T((0,1,0)) = (0,0,0), T((0,0,1)) = (0,0,1)$ and the matrix representation
+$$\begin{pmatrix}
+1&0&0\\0&0&0\\0&0&1
+\end{pmatrix} \quad \text{so that} \quad \begin{pmatrix}
+1&0&0\\0&0&0\\0&0&1
+\end{pmatrix} \begin{pmatrix}
+x_1\\x_2\\x_3
+\end{pmatrix} = \begin{pmatrix}
+x_1\\0\\x_3
+\end{pmatrix} \quad \text{as desired.}$$
+
+(2) Since for any $(x_1,x_2,x_3)$, we have $T((x_1,x_2,x_3)) = (x_1,0,x_3)$, we may choose any real number for $x_2$ and still have a 0 in the second component under the transformation. Therefore $\text{ker}(T) = \{(0,x,0) \;|\; x \in \mathbb{R}\}$. We may also use a matrix calculation to further support this argument:
+
+$$
+\begin{pmatrix}
+1&0&0\\0&0&0\\0&0&1
+\end{pmatrix} \begin{pmatrix}
+0\\x\\0
+\end{pmatrix} = \begin{pmatrix}
+0\\0\\0
+\end{pmatrix}
+\;.$$
+
+(3)Since $\text{range}(T) = \{(x_1,0,x_2) \;|\; x_1,x_2 \in \mathbb{R}\}$, and we have been using the canonical basis for $\mathbb{R}^3$ so far in this exercise, let us propose $$\{(1,0,0), (0,0,1)\}$$ as a basis for the range of $T$. Clearly, then by taking $\alpha_1 = x_1$ and $\alpha_3 = x_3$ we have for any $(x_1,0,x_3) \in \text{range}(T)$ that $\alpha_1(1,0,0) + \alpha_3(0,0,1) = (x_1,0,x_3)$. 
+
+\section*{Exercise 4}
+
+Let $\mathcal{B} = \{(1,0,1), (0,2,2), (3,0,1)\}$, where the coordinates of these vectors are with respect to the canonical basis for $\mathbb{R}^3$. First consider the linear transformation $T : \mathbb{R}^3 \rightarrow \mathbb{R}^3$ (wrt the canonical basis in both sets) such that $$T((1,0,0)) = (1,0,1), \quad T((0,1,0)) = (0,2,2), \quad T((0,0,1)) = (3,0,1) \;.$$
+The matrix representation of this transformation is then
+$$ \begin{pmatrix}
+1&0&3\\0&2&0\\1&2&1
+\end{pmatrix} \;. $$
+
+To check this, let $(a,b,c) \in \mathbb{R}^3$. Then, using $e_i$ for canonical basis shorthand, $$
+T((a,b,c)) = T(ae_1 + be_2 + ce_3) = aT(e_1) + bT(e_2) + cT(e_3)$$ $$= a(1,0,1) + b(0,2,2) + c(3,0,1) = (a+3c,2b,a+2b+c).$$
+
+Next using matrices,
+
+$$\begin{pmatrix}
+1&0&3\\0&2&0\\1&2&1
+\end{pmatrix} \begin{pmatrix}
+a\\b\\c
+\end{pmatrix} = \begin{pmatrix}
+a+3c\\2b\\a+2b+c
+\end{pmatrix} \;. $$
+
+So the two calculations agree with one another.\\
+
+In order to find the matrix representation of the transformation from $\mathcal{B}$ to the the canonical basis, we would need to have a matrix that inverts the linear transformations effect on a vector. But this suggests that we should just take the matrix 
+
+$$  
+\begin{pmatrix}
+1&0&3\\0&2&0\\1&2&1
+\end{pmatrix}^{-1} = \begin{pmatrix}
+-1/2&-3/2&3/2\\0&1/2&0\\1/2&1/2&-1/2
+\end{pmatrix}$$
+
+in order to represent the linear transformation from $\mathcal{B}$ back to the canonical basis. 
+
+\section*{Exercise 5}
+
+Consider the linear transformation given by a clockwise rotation of $\pi/4$ in the plane spanned by $e_1,e_2$ along the $e_3$ axis. Call this linear transformation $T: \mathbb{R}^3 \rightarrow \mathbb{R}^3$. Applying the transformation to the canonical basis vectors (and using radians instead of degrees to achieve the same results) we have the mappings 
+
+$$T(e_1) = \begin{pmatrix}
+\text{cos}(-\pi/4) \\ \text{sin}(-\pi/4) \\ 0
+\end{pmatrix} = \begin{pmatrix}
+\sqrt{2}/2 \\ -\sqrt{2}/2 \\ 0
+\end{pmatrix} $$ $$T(e_2) = \begin{pmatrix}
+-\text{sin}(-\pi/4) \\ \text{cos}(-\pi/4) \\ 0
+\end{pmatrix} = \begin{pmatrix}
+\sqrt{2}/2 \\ \sqrt{2}/2 \\ 0
+\end{pmatrix} \quad T(e_3) = e_3 \,.$$
+
+For now we are using the canonical basis, so to represent this transformation using a matrix, we use the resulting vectors as the columns of the matrix that represents the transformation. This gives:
+
+$$R_T = \begin{pmatrix}
+\sqrt{2}/2 &\sqrt{2}/2 &0 \\ -\sqrt{2}/2 & \sqrt{2}/2 & 0\\ 0&0&1
+\end{pmatrix}$$
+
+
+To find the matrix representation of this same linear transformation but instead with respect to the basis $\mathcal{B}$ from exercise 4, we may start by first rotating the vectors in $\mathcal{B}$ using our $R_T$ matrix:
+
+$$\begin{pmatrix}
+\sqrt{2}/2 &\sqrt{2}/2 &0 \\ -\sqrt{2}/2 & \sqrt{2}/2 & 0\\ 0&0&1
+\end{pmatrix}\begin{pmatrix}
+1\\0\\1
+\end{pmatrix} = \begin{pmatrix}
+\sqrt{2}/2 \\ -\sqrt{2}/2 \\ 1
+\end{pmatrix}$$
+
+
+$$\begin{pmatrix}
+\sqrt{2}/2 &\sqrt{2}/2 &0 \\ -\sqrt{2}/2 & \sqrt{2}/2 & 0\\ 0&0&1
+\end{pmatrix}\begin{pmatrix}
+0\\2\\2
+\end{pmatrix} = \begin{pmatrix}
+\sqrt{2} \\ \sqrt{2} \\ 2
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+\sqrt{2}/2 &\sqrt{2}/2 &0 \\ -\sqrt{2}/2 & \sqrt{2}/2 & 0\\ 0&0&1
+\end{pmatrix}\begin{pmatrix}
+3\\0\\1
+\end{pmatrix} = \begin{pmatrix}
+3\sqrt{2}/2 \\ -3\sqrt{2}/2 \\ 1
+\end{pmatrix}$$
+
+Note that these vectors are with respect to the canonical basis, so we need to compute their coordinates with respect to $\mathcal{B}$. Recall that we have a matrix from exercise 4 that will assist in the process:
+
+$$\left[\begin{pmatrix}
+\sqrt{2}/2 \\ -\sqrt{2}/2 \\ 1
+\end{pmatrix}\right]_{\mathcal{B}} = 
+\begin{pmatrix}
+-1/2&-3/2&3/2\\0&1/2&0\\1/2&1/2&-1/2
+\end{pmatrix}\begin{pmatrix}
+\sqrt{2}/2 \\ -\sqrt{2}/2 \\ 1
+\end{pmatrix} = \begin{pmatrix}
+\sqrt{2}/2+3/2 \\ -\sqrt{2}/4 \\- 1/2
+\end{pmatrix}$$
+
+$$\left[\begin{pmatrix}
+\sqrt{2} \\ \sqrt{2} \\ 2
+\end{pmatrix}\right]_{\mathcal{B}} = 
+\begin{pmatrix}
+-1/2&-3/2&3/2\\0&1/2&0\\1/2&1/2&-1/2
+\end{pmatrix}\begin{pmatrix}
+\sqrt{2} \\ \sqrt{2} \\ 2
+\end{pmatrix} = \begin{pmatrix}
+-2\sqrt{2}+3 \\ \sqrt{2}/2 \\ \sqrt{2} - 1
+\end{pmatrix}$$
+
+$$\left[\begin{pmatrix}
+3\sqrt{2}/2 \\ -3\sqrt{2}/2 \\ 1
+\end{pmatrix}\right]_{\mathcal{B}} = 
+\begin{pmatrix}
+-1/2&-3/2&3/2\\0&1/2&0\\1/2&1/2&-1/2
+\end{pmatrix}\begin{pmatrix}
+3\sqrt{2}/2 \\ -3\sqrt{2}/2 \\ 1
+\end{pmatrix} = \begin{pmatrix}
+3\sqrt{2}/2 + 3/2 \\ -3\sqrt{2}/4 \\ -1/2
+\end{pmatrix}$$
+
+The matrix representation of the transformation with respect to the basis $\mathcal{B}$ is then given by:
+
+$$R_{T,\mathcal{B}} = \begin{pmatrix}
+\sqrt{2}/2+3/2 & -2\sqrt{2}+3& 3\sqrt{2}/2 +3/2\\ -\sqrt{2}/4 & \sqrt{2}/2 &-3\sqrt{2}/4 \\ -1/2 & \sqrt{2}-1 &-1/2
+\end{pmatrix}$$
+
+Note that we could also have found this matrix in one step by multiplying:
+
+$$ \begin{pmatrix}
+-1/2&-3/2&3/2\\0&1/2&0\\1/2&1/2&-1/2
+\end{pmatrix}
+\begin{pmatrix}
+\sqrt{2}/2 &\sqrt{2}/2 &0 \\ -\sqrt{2}/2 & \sqrt{2}/2 & 0\\ 0&0&1
+\end{pmatrix}$$
+\end{document}

@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+
+\title{MA 502 Homework 5}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+Let $X = C([0,1])$ denote the space of continuous maps defined on the unit interval. We will prove that the map $T(g) = \int_{0}^{1} g(x) \, dx$ is in $X^* = \{L : C([0,1]) \rightarrow \mathbb{R} \; | \; L \text{ is a linear map }\}$. \\
+
+
+First, since a function that is continuous on $[0,1]$ is integrable on $[0,1]$, we are able to define $T(g)$ for all $g \in X$. Also, $\int_{0}^{1} g(x) \, dx \in \mathbb{R}$ for all $g \in X$. Therefore, the definition $T : C([0,1]) \rightarrow \mathbb{R}$, $T(g) = \int_{0}^{1} g(x) \, dx$ makes sense. To prove that $T$ is linear, let $a \in \mathbb{R}$ and $g,h \in X = C([0,1])$. Then $T(ag) = \int_{0}^{1} ag(x) \, dx = a\int_{0}^{1} g(x) \, dx = aT(g)$. Also, $T(g+h) = \int_{0}^{1} [g(x) + h(x)] \, dx = \int_{0}^{1} g(x) \, dx + \int_{0}^{1} h(x) \, dx = T(g) + T(h)$. We conclude that $T : X \rightarrow \mathbb{R}$ is a linear map and that so $T \in X^*$. 
+
+\section{}
+
+Consider the following basis for $\mathbb{R}^3$:
+
+$$ \{(1,0,-1), (1,1,1), (2,2,0)\} \;. $$
+
+We will find the corresponding dual basis. \\
+
+For a basis $\{b_1,...,b_n\}$ of a vector space $V$, the dual basis $\{\beta_1,...\beta_n\}$ consists of linear functions satisfying
+
+\begin{align*}
+\beta_i(b_j) = \left\{ \begin{array}{cc} 
+                1 & \hspace{5mm} i=j \\
+                0 & \hspace{5mm} i\neq j \\
+                \end{array} \right.
+\end{align*}
+
+Here this means $\beta_1,\beta_2,\beta_3 : \mathbb{R}^3 \rightarrow \mathbb{R}$ satisfying
+
+$$\beta_1(b_1) = 1 ,\; \beta_1(b_2) = 0, \; \beta_1(b_3) = 0.$$
+$$\beta_2(b_1) = 0 ,\; \beta_2(b_2) = 1, \; \beta_2(b_3) = 0.$$
+$$\beta_3(b_1) = 0 ,\; \beta_3(b_2) = 0, \; \beta_3(b_3) = 1.$$
+
+Let $[\beta_i]$ denote the matrix representation of $\beta_i$ with respect to the standard basis (as a 1x3 matrix). Based on our requirements for the properties of the members of the dual basis, it must be that:
+
+$$\begin{pmatrix}
+1&0&0\\ 0&1&0\\ 0&0&1
+\end{pmatrix} = \begin{pmatrix}
+[\beta_1] \\ [\beta_2] \\ [\beta_3]
+\end{pmatrix} \begin{pmatrix}
+1&1&2 \\ 0&1&2 \\ -1&1&0
+\end{pmatrix} \implies \begin{pmatrix}
+[\beta_1] \\ [\beta_2] \\ [\beta_3]
+\end{pmatrix} = \begin{pmatrix}
+1&1&2 \\ 0&1&2 \\ -1&1&0
+\end{pmatrix}^{-1}$$ $$ =\begin{pmatrix}
+1&-1&0\\ 1 & -1 & 1 \\ -1/2 &1 & -1/2
+\end{pmatrix}\;.$$
+
+From this we see that the dual basis, using $x = (x_1,x_2,x_3) \in \mathbb{R}^3$ using coordinates with respect to the standard basis, is
+$$ \{\beta_1(x) = x_1-x_2,\; \beta_2(x) = x_1-x_2 + x_3,\; \beta_3(x) = -\frac{x_1}{2}+x_2 - \frac{x_3}{2}\}.$$
+
+It can be verified that the requirement \begin{align*}
+\beta_i(b_j) = \left\{ \begin{array}{cc} 
+                1 & \hspace{5mm} i=j \\
+                0 & \hspace{5mm} i\neq j \\
+                \end{array} \right.
+\end{align*} is in fact satisfied by the dual basis we have found. 
+
+\section{}
+
+Prove that the determinant, interpreted as the transformation $$D : \mathbb{R}^{n^2} \rightarrow \mathbb{R}, \quad D(A) = \text{determinant}(A) $$ is linear in each of its rows.\\
+
+Let $R$ be the $r^{th}$ row of the $n\times n$ matrix $A$, and suppose that $R = \alpha R_1 + \beta R_2$ where $R_1,R_2 \in \mathbb{R}^n$ and $\alpha,\beta \in \mathbb{R}$. We define the matrix $A_i$ as the matrix where row $R$ (which is the $r^{th}$ row of matrix $A$) is replaced by $R_i$. We need to introduce notation to denote the elements of $R,R_1$ and $R_2$. We let $$R = (a_{r1}\quad a_{r2}\quad ... \quad a_{rn}) \quad R_1 = (b_{r1}\quad b_{r2}\quad ... \quad b_{rn}) \quad R_2 = (c_{r1}\quad c_{r2}\quad ... \quad c_{rn}) \;.$$By hypothesis, $a_{ri} = \alpha b_{ri} + \beta c_{ri}$ for $i = 1,...,n$. Using the permutation definition of the determinant of a matrix we have
+
+\begin{align*}
+\alpha D(A_1) + \beta D(A_2) &= \alpha\sum_{\pi} \sigma(\pi) a_{1\pi(1)}...a_{(r-1)\pi(r-1)}b_{r\pi(r)}...a_{n\pi(n)}\\ &+ \beta\sum_{\pi} \sigma(\pi) a_{1\pi(1)}...a_{(r-1)\pi(r-1)}c_{r\pi(r)}...a_{n\pi(n)} \\
+&= \sum_{\pi} \sigma(\pi) a_{1\pi(1)}...a_{(r-1)\pi(r-1)}\alpha b_{r\pi(r)}...a_{n\pi(n)}\\ &+\sum_{\pi} \sigma(\pi) a_{1\pi(1)}...a_{(r-1)\pi(r-1)}\beta c_{r\pi(r)}...a_{n\pi(n)} \\
+&= \sum_{\pi} \sigma(\pi) (a_{1\pi(1)}...a_{(r-1)\pi(r-1)} a_{(r+1)\pi(r+1)}...a_{n\pi(n)})(\alpha b_{r\pi(r)} + \beta c_{r\pi(r)})\\
+&= \sum_{\pi} \sigma(\pi) (a_{1\pi(1)}...a_{(r-1)\pi(r-1)} a_{(r+1)\pi(r+1)}...a_{n\pi(n)})(a_{r\pi(r)})\\
+&= \sum_{\pi} \sigma(\pi) a_{1\pi(1)}...a_{(r-1)\pi(r-1)}a_{r\pi(r)} a_{(r+1)\pi(r+1)}...a_{n\pi(n)} \\
+&= D(A)
+\end{align*} 
+
+\section{}
+
+We prove that the determinant map, $D: \mathbb{R}^{n^2} \rightarrow \mathbb{R}$, $D(A) = \text{determinant}(A)$ is alternating. That is, if we exchange two rows of a matrix $A$, $R_i$ and $R_j$ with $j \neq i$ to get the matrix $\tilde{A}$, then $D(A) = -D(\tilde{A})$.  \\
+
+Although it is not necessary to write the multiplications in ascending order in the definition of the determinant, we assume without loss of generality that $i < j$ for organizational convenience. Using the definition of the determinant of $A$,
+\begin{align}
+D(\tilde{A}) &= \sum_{\pi} \sigma(\pi)a_{1\pi(1)}...a_{ji\pi(i)}...a_{i\pi(j)}...a_{n\pi(n)} \\
+&= \sum_{\pi} \sigma(\pi)a_{1\pi(1)}...a_{i\pi(j)}...a_{j\pi(i)}...a_{n\pi(n)} \\ 
+&= -\sum_{\pi} \sigma(\pi)a_{1\pi(1)}...a_{i\pi(i)}...a_{j\pi(j)}...a_{n\pi(n)} \\
+&= -D(A).
+\end{align}
+
+We arrived at line 3 from line 2 of this calculation using the fact that the number of permutations changed by 1. If a permutation parity is even, changing the permutation count by 1 would give an odd permutation parity and reverse if a permutation parity is odd. Since $\sigma(\pi) = 1$ for even parity and $\sigma(\pi) = -1$ for odd parity, we switch the sign. 
+
+\section{}
+
+For $2\times 2$ matrices, we prove that the determinant map is the only map $D : \mathbb{R}^{n^2} \rightarrow \mathbb{R}$ that is multilinear as a function of 2 rows, alternating, and for which $D(I) = 1$.
+
+Consider the determinant of the arbitrary matrix A:
+\begin{align*}
+D(A) &= D(\begin{pmatrix}
+a&b\\c&d
+\end{pmatrix})\\ &= D(\begin{pmatrix}
+ae_1^T&+ & be_2^T \\ c & & d
+\end{pmatrix})\\ &=D(\begin{pmatrix}
+a&0\\c&d
+\end{pmatrix}) + D(\begin{pmatrix}
+0&b\\c&d
+\end{pmatrix}) \quad \text{by multilinearity} \\
+&=aD(\begin{pmatrix}
+1&0\\c&d
+\end{pmatrix}) + bD(\begin{pmatrix}
+0&1\\c&d
+\end{pmatrix}) \quad \text{by multinearity}\\
+&= aD(\begin{pmatrix}
+1& &0\\ ce_1^T &+& de_2^T
+\end{pmatrix}) + bD(\begin{pmatrix}
+0& &1\\ce_1^T &+& de_2^T
+\end{pmatrix})\\
+&=a\left[D(\begin{pmatrix}
+1 & 0 \\ c&0
+\end{pmatrix}) + D(\begin{pmatrix}
+1 & 0 \\ 0&d
+\end{pmatrix})\right] + b\left[D(\begin{pmatrix}
+0 & 1 \\ c&0
+\end{pmatrix}) + D(\begin{pmatrix}
+0 & 1 \\ 0&d
+\end{pmatrix})\right] \; \text{multilinearity} \\
+&= a\left[cD(\begin{pmatrix}
+1 & 0 \\ 1&0
+\end{pmatrix}) + dD(\begin{pmatrix}
+1 & 0 \\ 0&1
+\end{pmatrix})\right] + b\left[cD(\begin{pmatrix}
+0 & 1 \\ 1&0
+\end{pmatrix}) + dD(\begin{pmatrix}
+0 & 1 \\ 0&1
+\end{pmatrix})\right] \; \text{multilinearity}
+\end{align*}
+\begin{align*}
+&=a\left[c(0) + dD(\begin{pmatrix}
+1 & 0 \\ 0&1
+\end{pmatrix})\right] + b\left[cD(\begin{pmatrix}
+0 & 1 \\ 1&0
+\end{pmatrix}) + d(0)\right] \quad (*) \\
+&=a\left[dD(\begin{pmatrix}
+1 & 0 \\ 0&1
+\end{pmatrix})\right] + b\left[-cD(\begin{pmatrix}
+1 & 0 \\ 0&1
+\end{pmatrix})\right] \quad\text{by the alternating property} \\ &= ad - bc \quad \text{by } D(I) = 1 \;.
+\end{align*}
+
+In particular, if $$\begin{pmatrix}
+a&b\\c&d
+\end{pmatrix} = \begin{pmatrix}
+1&0\\0&1
+\end{pmatrix} \quad \text{then} \quad D(\begin{pmatrix}
+a&b\\c&d
+\end{pmatrix}) = (1)(1) - (0)(0) = 1 \,.$$
+
+
+
+(*) By the alternating property of the determinant map and the fact that the rows are identical in each case,
+
+$$D(\begin{pmatrix}
+1&0\\1&0
+\end{pmatrix}) = -D(\begin{pmatrix}
+1&0\\1&0
+\end{pmatrix}) \implies D(\begin{pmatrix}
+1&0\\1&0
+\end{pmatrix}) = 0$$
+
+$$D(\begin{pmatrix}
+0&1\\0&1
+\end{pmatrix}) = -D(\begin{pmatrix}
+0&1\\0&1
+\end{pmatrix}) \implies D(\begin{pmatrix}
+0&1\\0&1
+\end{pmatrix}) = 0$$
+
+\end{document}

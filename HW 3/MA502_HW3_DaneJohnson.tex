@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{MA 502 Homework 3}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section*{Exercise 1}
+
+Given two bases $\mathbb{B}_1 = \{v_1,...,v_n\}$ and $\mathbb{B}_2 = \{w_1,...,w_n\}$ for the vector space $V$ and a linear transformation $L : V \rightarrow V$, prove that
+$$[L]_{\mathbb{B}_2 \rightarrow \mathbb{B}_1}[a]_{\mathbb{B}_2} = [\mathbb{B}_2 \rightarrow \mathbb{B}_1][L]_{\mathbb{B}_1 \rightarrow \mathbb{B}_2}[a]_{\mathbb{B}_1} \;.$$
+
+First we have that $$[L]_{\mathbb{B}_1 \rightarrow \mathbb{B}_2}[a]_{\mathbb{B}_2} = [La]_{\mathbb{B}_1} \,.$$
+
+Next we have
+\begin{align*}
+[\mathbb{B}_2 \rightarrow \mathbb{B}_1][L]_{\mathbb{B}_1 \rightarrow \mathbb{B}_2}[a]_{\mathbb{B}_1} &= [\mathbb{B}_2 \rightarrow \mathbb{B}_1][La]_{\mathbb{B}_2} \\
+&= [I]_{\mathbb{B}_2 \rightarrow \mathbb{B}_1} [La]_{\mathbb{B}_2} \\
+&= [I(La)]_{\mathbb{B}_1} = [La]_{\mathbb{B}_1} \;.
+\end{align*}
+
+Therefore, we conclude that 
+$$[L]_{\mathbb{B}_2 \rightarrow \mathbb{B}_1}[a]_{\mathbb{B}_2} = [\mathbb{B}_2 \rightarrow \mathbb{B}_1][L]_{\mathbb{B}_1 \rightarrow \mathbb{B}_2}[a]_{\mathbb{B}_1} \;.$$
+
+\section*{Exercise 2}
+
+Consider the linear map $L : \mathbb{R}^3 \rightarrow \mathbb{R}^3$ represented in canonical coordinates by the matrix
+$$[L]_{\mathcal{C} \rightarrow \mathcal{C}} = \begin{pmatrix}
+1&2&3 \\ 4&0&4 \\ 2&1&3
+\end{pmatrix} \;.$$
+
+First we find the null space and range of $L$ using the transformation's matrix representation (since the matrix representation will provide all the information we need about the transformation to find these spaces). \\
+
+The null space consists of vectors from $\mathbb{R}^3$ that will satisfy:
+
+$$\begin{pmatrix}
+1&2&3 \\ 4&0&4 \\ 2&1&3
+\end{pmatrix} \begin{pmatrix}
+x_1 \\ x_2 \\ x_3
+\end{pmatrix} = \begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix} \;.$$
+
+For computation we use row reduction on the corresponding augmented matrix:
+
+\begin{align*}
+\begin{pmatrix} 1&2&3 & 0 \\ 4&0&4 &0\\ 2&1&3&0 \end{pmatrix} &\sim
+\begin{pmatrix}
+1&2&3 & 0 \\ -2&0&-2 &0\\ 2&1&3&0
+\end{pmatrix}
+\sim \begin{pmatrix}
+1&2&3 & 0 \\ -2&0&-2 &0\\ 0&1&1&0
+\end{pmatrix} \\
+&\sim \begin{pmatrix}
+1&2&3 & 0 \\ -1&0&-1 &0\\ 0&1&1&0
+\end{pmatrix} \sim \begin{pmatrix}
+1&2&3 & 0 \\ 0&2&2 &0\\ 0&1&1&0
+\end{pmatrix} \\ &\sim \begin{pmatrix}
+1&2&3 & 0 \\ 0&1&1 &0\\ 0&0&0&0
+\end{pmatrix} \sim \begin{pmatrix}
+1&0&1 & 0 \\ 0&1&1 &0\\ 0&0&0&0
+\end{pmatrix}
+\end{align*}
+Translating the results of our matrix computation to the properties of $L$, we see that if $(x_1,x_2,x_3) \in \mathcal{N}(L)$, then $x_1 = -x_3$ and $x_2 = -x_3$, where we may choose $x_3$ at will. Thus the null space of $L$ is the set$$\mathcal{N}(L) = \{c(-1,-1,1) \in \mathbb{R}^3 \, , c \in \mathbb{R}\} \,.$$
+
+To find the range of $L$, we first note that the columns of the matrix are dependent. In particular, 
+
+$$\begin{pmatrix} 1\\4\\2 \end{pmatrix} + \begin{pmatrix} 2\\0\\1 \end{pmatrix} = \begin{pmatrix} 3\\4\\3 \end{pmatrix} \; .$$
+
+Therefore the column space of the matrix is the same as the column space of the first two columns of the matrix. Since the column space of the matrix is a matrix representation of the range of the linear transformation $L$, we see that the range of $L$ is the set:
+
+$$ \{c_1(1,4,2) + c_2(2,0,1) \; | \; c_1,c_2 \in \mathbb{R}\} \;.$$
+
+Consider the linear system $Lv = (1,2,0)$. To see if a solution exists, we use matrix computations:
+
+\begin{align*}
+\begin{pmatrix} 1&2&3&1 \\ 4&0&4&2\\ 2&1&3&0 \end{pmatrix} &\sim \begin{pmatrix} 1&2&3&1 \\ 0&-8&-8&-2\\ 0&-3&-3&0 \end{pmatrix} \\
+&\sim \begin{pmatrix} 1&2&3&1 \\ 0&0&0&-2\\ 0&1&1&0 \end{pmatrix} \sim \begin{pmatrix} 1&0&1&1 \\ 0&1&1&0\\ 0&0&0&-2 \end{pmatrix} \;.
+\end{align*}
+
+In order for $v = (v_1,v_2,v_3)$ to satisfy the linear system, this row reduced system tells us that $0v_3 = -2$, so that $0 = -2$. Since this cannot be, we conclude that there is no solution to the system $Lv = (1,2,0)$. \\
+
+Consider the linear system $Lv = (6,8,6)$. We use row reduction to determine whether solutions to this system exist:
+
+\begin{align*}
+\begin{pmatrix} 1&2&3&6 \\ 4&0&4&8\\ 2&1&3&6 \end{pmatrix} &\sim \begin{pmatrix} 1&2&3&1 \\ 0&-8&-8&-16\\ 0&-3&-3&-6 \end{pmatrix} \\
+&\sim \begin{pmatrix} 1&2&3&1 \\ 0&1&1&2\\ 0&-1&-1&-2 \end{pmatrix} \sim \begin{pmatrix} 1&2&3&6 \\ 0&1&1&2\\ 0&0&0&0 \end{pmatrix} \\
+&\sim \begin{pmatrix} 1&0&1&2 \\ 0&1&1&2\\ 0&0&0&0 \end{pmatrix}
+\end{align*}
+
+From this we have that if $v = (v_1,v_2,v_3)$ is a solution to the system it must be the case that $v_1 = 2-v_3$ and $v_2 = 2-v_3$. This shows that any vector of the form
+$$v = \begin{pmatrix} 2\\2\\0 \end{pmatrix} + c\begin{pmatrix}
+-1\\-1\\1
+\end{pmatrix} \; c \in \mathbb{R} \,.$$
+
+Since we may choose $c$ freely, there are infinitely many solutions to the system. For one specific solution, set $c=0$ in the above to get $L(2,2,0) = (6,8,6)$. 
+
+\section*{Exercise 3}
+
+Consider the operator $T: \mathbb{P} \rightarrow \mathbb{P}$, $T(p) = \int p(x) \, dx $, where $\mathbb{P}$ is the space of all polynomials. We find the null space and range of $T$.\\
+
+Note that if $p(x)$ is not the zero polynomial, then $\int p(x) \, dx \neq 0$ and that if $p(x)$ is the zero polynomial, then $\int p(x) \, dx = 0$. So the null space of $T$ includes the zero polynomial but no other polynomial. \\
+
+In order for $\mathbb{P}$ to indeed be a vector space, we must work under the agreement that the constant of integration is 0. \\
+
+The range of $T$ is the set of all polynomials in $\mathbb{P}$ with a zero constant term. That is, $p(x)$ of the form $p(x) = a_1x +...+a_nx^n$ for some natural number $n$. To see why, first we see that if $p(x)$ is of the form $p(x) = a_0 +a_1x+...+a_nx^n$ with $a_0 \neq 0$, then there does not exist any polyomial $q(x) \in \mathbb{P}$ such that $T(q) = \int q(x) \, dx = p(x)$ since integration of a polynomial cannot result in any constant terms unless the constant of integration is nonzero, and we assumed that the constant of integration is zero. Next, if $p(x) = a_1x+...+a_nx^n \in \mathbb{P}$, set $q(x) = a_1 + 2a_2x +...+na_nx^{n-1}$. Then $T(q) = \int (a_1 + 2a_2x +... na_nx^{n-1})\, dx = p(x)$.
+
+\section*{Exercise 4}
+
+Let $T: \mathbb{R}^3 \rightarrow \mathbb{R}^{100}$ be a linear transformation. We show that $T$ cannot be a surjective transformation. \\
+
+In class we proved that if $T : X \rightarrow Y$ is a linear transformation between vectors spaces $X$ and $Y$ and if dim $Y >$ dim $X$, then $T$ is not surjective. Here we see that dim $\mathbb{R}^3 = 3$ and dim $\mathbb{R}^{100} = 100$. Since dim $\mathbb{R}^{100} >$ dim $\mathbb{R}^3$, we conclude that $T$ is not surjective. 
+
+
+\section*{Exercise 5}
+
+Let $T: \mathbb{R}^{100} \rightarrow \mathbb{R}^3$ be a linear transformation. We show that $T$ cannot be an injective transformation. \\
+
+In class we proved that if $T : X \rightarrow Y$ is a linear transformation between vectors spaces $X$ and $Y$ and if dim $Y <$ dim $X$, then $T$ is not injective. Here we see that dim $\mathbb{R}^{100} = 100$ and dim $\mathbb{R}^3 = 3$. Since dim $\mathbb{R}^3 <$ dim $\mathbb{R}^{100}$, we conclude that $T$ is not injective. \\
+
+It is possible for such a map to be onto. Take $T : \mathbb{R}^{100} \rightarrow \mathbb{R}^3$, $T((x_1,x_2,x_3,...,x_{100})) = (x_1,x_2,x_3)$. Then for any element of $\mathbb{R}^3$, we see that any vector from $\mathbb{R}^{100}$ for which the first three components are the same as the target vector will suffice (while $x_4,x_5,...,x_{100}$ may be taken arbitrarily). 
+
+\end{document}

@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+
+\title{MA 502 Homework 8}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+\noindent{Let $A$ be an $n\times n$ matrix with the single eigenvalue $\alpha \in \mathbb{C}$. Set $d_i = \text{dim(Ker}(A- \alpha I)^i)$ and let $d_0 = 0$.} \\
+
+$\bullet$\\
+
+\noindent{Suppose $n = 4, d_1 = 2, d_2 = 4$. To find the Jordan Canonical Form of $A$, we note the facts:}\\
+
+\indent{There are $d_1 - d_0 = 2$ blocks of size $1 \times 1$ or larger.}\\
+\indent{There are $d_2 - d_1 = 2$ blocks of size $2 \times 2$ or larger.}\\
+
+\noindent{We cannot have a block of size $3 \times 3$ or larger since the assumption that $n = 4$ would then require that we cannot have two blocks of size $2 \times 2$ or larger. Therefore, the JCF must have two blocks of size $2\times 2$. We conclude that the JCF of $A$ is:}
+
+$$J = \begin{pmatrix}
+\alpha & 1 & 0 & 0 \\ 0 & \alpha & 0 & 0 \\ 0 & 0 & \alpha & 1 \\ 0 & 0 & 0 & \alpha
+\end{pmatrix} \;.$$
+
+$\bullet$ \\
+
+\noindent{Suppose $n = 6, d_1 = 3, d_2 = 5, d_3 = 6$. Then in the JCF of $A$ it must be the case that:}\\
+
+There are $d_1 - d_0 = 3$ blocks of size $1\times 1$ or larger.\\
+\indent{There are $d_2 - d_1 = 2$ blocks of size $2\times 2$ or larger.}\\
+\indent{There is $d_3 - d_2 = 1$ block of size $1\times 1$ or larger.}\\
+
+We cannot have a block of size $4 \times 4$ or larger since the requirements that we have at least two blocks of size $2 \times 2$ or larger and three blocks in total would require us to exceed the dimensions of a $6\times 6$ matrix. So the maximum size of a block must be $3 \times 3$. With one block of size $3\times 3$ the remaining blocks must be of sizes $2\times 2$ and $1 \times 1$. Therefore,
+
+$$J = \begin{pmatrix}
+\alpha &0 &0 &0 &0 & 0 \\ 0 & \alpha & 1 & 0 & 0 & 0 \\ 0 & 0 & \alpha & 0 & 0 & 0 \\ 0&0&0&\alpha&1&0 \\ 0&0&0&0&\alpha&1 \\ 0&0&0&0&0&\alpha
+\end{pmatrix} \;.$$
+
+\noindent{Suppose $n = 5$ and that $A$ has two eigenvalues. For the eigenvalue $\alpha = 0$, we have $d_1 = 2, d_2 = 3, d_3 = 4$. For the eigenvalue $\alpha = 1$ we have $d_1 = 1$. This means:}
+
+\indent{For $\alpha = 0$, there are 2 blocks of size $1 \times 1$ or larger}\\
+\indent{There is 1 block of size $2\times 2$ or larger}\\
+\indent{There is 1 block of size $3 \times 3$ or larger}\\
+
+\indent{For $\alpha = 1$, there is 1 block of size $1\times 1$ or larger}. \\
+
+\noindent{For $\alpha = 0$, we need one block of size $3 \times 3$ or larger and two blocks of size $1 \times 1$ or larger. If we include a block of size $2 \times 2$ it will be impossible to include a block for $\alpha = 1$. Then we must have one block of size $1 \times 1$ for $\alpha = 1$, one block of size $1 \times 1$ for $\alpha = 0$, and one block of size $3 \times 3$ for $\alpha = 0$. Up to the ordering of blocks, the JCF of $A$ is:}
+
+$$J = \begin{pmatrix}
+1&0&0&0&0\\ 0 &0 &0 &0 &0 \\ 0&0&0&1&0\\0&0&0&0&1\\0&0&0&0&0
+\end{pmatrix} \;.$$
+
+\section{}
+
+Consider the matrix 
+
+$$A = \begin{pmatrix}
+0&1&2\\0&0&2\\0&0&0
+\end{pmatrix} \;.$$
+
+Note that since $A$ is upper triangular, the eigenvalues of $A$ lie along the diagonal. So we have that $\lambda = 0$ is the only eigenvalue of $A$ with algebraic multiplicity 3. Putting $\lambda = 0$ in $A - \lambda I$, we have $A - \lambda I = A - 0I = A$. Therefore $\text{Null}(A-\lambda I) = \text{Null}(A) = \{k (1, 0, 0) \,| \, k \in \mathbb{C}\}$.  Therefore we have only one independent eigenvector $$ \begin{pmatrix}
+1\\0\\0
+\end{pmatrix} \;.$$
+
+Next we see that $$A^2 = \begin{pmatrix}
+0 & 0 & 2 \\ 0 &0 &0 \\ 0& 0 & 0
+\end{pmatrix} \quad A^3 =  \begin{pmatrix}
+0 & 0 & 0 \\ 0 &0 &0 \\ 0& 0 & 0
+\end{pmatrix} \;.$$
+
+And so $d_2 = \text{Null}((A-0I)^2)= \text{Null}(A^2) = 2$ and similarly $ d_3 = \text{Null}(A^3) = 3$. Therefore in the JCF of $A$ we have that there is $d_1 - d_0 = 1$ block of size $1 \times 1$ or larger, $d_2 - d_1 = 1$ block of size $2 \times 2$ or larger, and $d_3 - d_2 = 1$ block of size $3 \times 3$ or larger. But since $A$ is size $3 \times 3$ we conclude from this information that there must just be one block in the JCF of size $3 \times 3$ and 
+$$ J = \begin{pmatrix}
+0&1&0\\0&0&1\\0&0&0
+\end{pmatrix} \;.$$ 
+
+\section{}
+
+Suppose $A : V \rightarrow V$ is a linear transformation with eigenvalues $\{\lambda_1, ..., \lambda_n\}$ and that $f(t)$ is any polynomial. Consider the eigenvalue $\lambda \in \{\lambda_1, ..., \lambda_n\}$ with corresponding eigenvector $v$. Note that since $A$ is linear and $A(v) = \lambda v$, then $A^2(v) = A(A(v)) = A(\lambda v) = \lambda A(v) = \lambda^2 v$, which shows that $\lambda^2$ is an eigenvalue of the composition $A^2$. Applying this reasoning inductively we have that $\lambda^m$ is an eigenvalue of the transformation $A^m$ stil corresponding to the eigenvector $v$. Also, the linearity of $A^m$ for any positive nonnegative integer $m$ means that $(kA^m)(v) = k(A^m(v)) = k\lambda^m v$. Therefore, if $\lambda^m$ is an eigenvalue of $A^m$ then $k\lambda^m$ is an eigenvalue of $kA$. Since $f$ is a polynomial, $f$ is of the form $f(t) = a_0 + a_1t + ...+a_mt^m$. Then, letting $I : V \rightarrow V$ denote the identity transformation, 
+\begin{align}
+[f(A)](v) &= (a_0I + a_1A + ... +a_mA^m)(v) \\
+&= a_0I(v) + a_1A(v) + ... a_mA^m(v) \\
+&= a_0\lambda v + a_1 \lambda v + ... + a_m \lambda^m v\\
+&= (a_0\lambda + a_1 \lambda + ...a_m \lambda^m )v \\
+&= f(\lambda)v \;.
+\end{align}
+
+This shows that for each $\lambda_i \in \{\lambda_1,...,\lambda_n\}$, $f(\lambda_i)$ is an eigenvalue of the transformation of $f(A)$. Also, $f(A)$ can have no eigenvalues not included in this set since $f(A)$ is constructed using compositions of $A$ with itself (and scaling), which means that the set of eigenvalues of $f(A)$ must be a subset of the set of eigenvalues of $A$. 
+
+\section{}
+
+Suppose $A$ is a square matrix with zero determinant. Certainly we know by the Cayley - Hamilton Theorem that since the characteristic polynomial $\chi_A$ has the property that $\chi_A(A) = 0$, then $A \chi_A = A(0) = 0$. But we can show further that the characteristic polynomial is not the only nonzero polynomial, $p$, for which $Ap(A)$ holds. We write $$\chi_A(\lambda) = a_0 + a_1\lambda + ... + a_n\lambda^n\;.$$ Then we have $$0 = \chi_A(0) =  a_0 \implies \chi_A(\lambda) = \lambda(a_1 + \lambda a_2 + ... + \lambda^{n-1}a_n) \;.$$ The since $\chi_A(A) = 0$, we see that $$0 = \chi_A(A) = A(a_1 + a_2 A + ... + a_n A^{n-1}) \;.$$
+
+Taking $p(t) = a_1 + a_2 t + ... + a_n t^{n-1}$ we conclude that $Ap(A) = 0$. 
+
+\section{}
+
+To find $4 \times 4$ matrices with minimal polynomials of degree $1,2,3,$ and $4$, one strategy is to first pick specific polynomials of each degree and find matrices for which each polynomial is the minimal polynomial. Set $p_1(x) = x$, which is degree 1. To find the matrix $A_1$ for which $p_1$ is the minimal polynomial, just take $A_1 = 0 \in \mathbb{R}^{4 \times 4}$. Next consider the polynomial $p_2(x) = x^2$. If we require that $A_2$ have minimal polynomial $p_2(x)$, we may take $$A_2 = \begin{pmatrix}
+0&1&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0
+\end{pmatrix} \implies p_2(A) = A_2^2 = 0 \;.$$
+
+Take $p_3(x) = x^3$. Then $p_3$ is the minimal polynomial of $$A_3 = \begin{pmatrix}
+0&1&1&0\\0&0&1&0\\0&0&0&0\\0&0&0&0
+\end{pmatrix} \implies A_3^2 = \begin{pmatrix}
+0&0&1&0\\0&0&0&0\\0&0&0&0\\0&0&0&0
+\end{pmatrix}\, ,\, p_3(A) = A_3^3 = 0\;.$$
+
+Take $p_4(x) = x^4$. Then $p_4$ is the minimal polynomial of $$A_4 = \begin{pmatrix}
+0&1&1&1\\0&0&1&1\\0&0&0&1\\0&0&0&0
+\end{pmatrix} \implies $$
+$$A_4^2 = \begin{pmatrix}
+0&0&1&2\\0&0&0&1\\0&0&0&0\\0&0&0&0
+\end{pmatrix} \, , \, A_4^3 = \begin{pmatrix}
+0&0&0&1\\0&0&0&0\\0&0&0&0\\0&0&0&0
+\end{pmatrix}\, ,\, p_4(A)=A^4 = 0 \;.$$
+
+\end{document}

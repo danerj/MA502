@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{indentfirst}
+
+\title{MA 502 Homework 7}
+\author{Dane Johnson}
+
+\begin{document}
+\maketitle
+
+\section{}
+
+Let $A$ be an $n\times n$ matrix and $J = \{f(t) \in \mathbb{K}[t] \; | \; f(A) = 0\}$. To show that $J$ is an ideal, we check that the zero polynomial is in $J$, that if $f,g \in J$ then $f+g \in J$, and that if $f \in J$ and $g \in K[t]$ then $gf \in J$. \\
+
+Let $\mathcal{O}$ denote the zero polynomial, then $\mathcal{O}(A) = 0$, so $\mathcal{O} \in J$. \\
+
+Suppose $f,g \in J$. Then $f(A) = 0$ and $g(A) = 0$, so it follows that $(f+g)(A) = f(A) + g(A) = 0$. Thus, $f+g \in J$. \\
+
+Let $g \in K[t]$ and $f \in J$. Then $(gf)(A) = g(A)f(A) = g(A) \, 0 = 0$. \\
+
+Let $p \in K[t]$ denote the characteristic polynomial of $A$. Then $p$ is of degree $n$ and by the Cayley Hamilton Theorem, $p(A) = 0$. Therefore $p \in J$ and since $J$ is an ideal, we also have that $p^2 \in J$. Then $p^2$ is a polynomial of degree $n^2$ and it is the case that $p^2(A) = p(A)p(A) = 0$ as well.
+
+\section{}
+
+Let ad$(A)$ denote the classical adjoint of the $n \times n$ matrix $A$, where ad$(A) = $(co$(A))^T$. That is, the adjoint is the transpose of the cofactor matrix of $A$. Let $(A\text{ad}(A))_{ij}$ denote the element in the $i^{th}$ row and $j^{th}$ column of the product $A\text{ad}(A)$, $a_{ij}$ the element of $A$ in row $i$ and column $j$, and $b_{ij}$ the element of ad$(A)$ in row $i$ and column $j$. Then considering the $j^{th}$ column,
+
+$$ (A\text{ad}(A))_{ij} = \sum_{k=1}^n a_{ik}b_{ki} = \sum_{k=1}^n (-1)^k \text{det} a_{ik}\text{det}(A_{jk})\;.$$
+
+When $i = j$ this computes the determinant of $A$ but when $i \neq j$, this computes the determinant of a matrix with a repeated row, which must have a 0 determinant. So we conclude that $(A\text{ad}(A))_{ij} = $det$(A)$ when $i = j$ and $(A\text{ad}(A))_{ij} = 0$ when $i \neq j$. Therefore $A\text{ad}(A) = $det$(A)I$. \\
+
+Next we note that the cofactor matrix of $A^T$ is the transpose of the cofactor matrix of $A$. That is, co$(A^T) = ($co$(A))^T$. Also, recall that det$(A) = $det$(A^T)$. Then since
+
+$$\text{ad}(A)A = (\text{co}(A))^TA = (A^T\text{co}(A))^T = (A^T(\text{co}(A^T))^T)^T,$$ 
+
+we apply the reasoning above to see that $(\text{ad}(A)A)^T = A^T(\text{co}(A^T))^T = \text{det}(A^T)I = \text{det}(A)I$. But since $(\text{ad}(A)A)^T = \text{det}(A)I$, which is a diagonal matrix, we conclude that $\text{ad}(A)A = \text{det}(A)I$ as well.
+
+\section{}
+
+Let $A$ be an upper triangular $n \times n$ matrix.\\
+
+$\bullet$\\
+
+If we let $A_{ij}$ denote the element of $A$ in the $i^{th}$ row and $j^{th}$ column, then $A_{ij} = 0$ for $i > j$. First we prove that the product of two upper triangular matrices is upper triangular.\\
+
+Let $B$ be an $n \times n$ upper triangular matrix as well. We define $B_{ij}$ and $(AB)_{ij}$ similarly to $A_{ij}$. Note that if $i = 1$, then $1=i>j$ cannot occur for any column number $j$ and since the definition of upper triangular requires only that $(AB)_{ij} = 0$ for $i>j$, we assume $i > 1$ in what follows.\\
+
+The element in the $i^{th}$ row and $j^{th}$ column of $AB$ is found by:
+
+$$(AB)_{ij} = \sum_{k=1}^n A_{ik}B_{kj} = \sum_{k=1}^{i-1} A_{ik}B_{kj} + \sum_{k = i}^n A_{ik}B_{kj}. $$
+
+Inspecting the summation from $k=1$ to $k = i-1$, we see that since $k<i$, $A_{ik} = 0$ in each term so that $sum_{k=1}^{i-1} A_{ik}B_{kj} = 0$. This means that
+
+$$(AB)_{ij} = \sum_{k = i}^n A_{ik}B_{kj}. $$
+
+Note that since $k\geq i$, then if it is the case that $i > j$, then $k > j$ so that $B_{kj} = 0$. Therefore, we may conclude that $(AB)_{ij} = 0$ whenever it is the case that $i > j$, which means by definition of an upper triangular matrix that $AB$ is upper triangular. \\
+
+Using the result above, we see that since $A^2$ is the product of two upper triangular $n \times n$ matrices, $A^2$ is also upper triangular. Then since $A$ and $A^2$ are upper triangular, $A^3 = A^2A$ is upper triangular. Applying the reasoning inductively we conclude that $A^k = A^{k-1}A$ is upper triangular for all positive powers $k$. \\
+
+We cannot prove that $A^k$ is upper triangular for $k < 0$ without further assuming that $A$ is invertible. We do not know whether $A$ is invertible here. \\
+
+$\bullet$\\
+
+Since $A$ is an upper triangular matrix, its eigenvalues $\lambda_1, \lambda_2, ...,\lambda_n$ are the $n$ elements on the diagonal of $A$ (not necessarily distinct). Since $f$ is a polynomial, $f(A)$ is the result of exponentiating $A$, multiplying by elements $k \in \mathbb{K}$ and adding matrices. That is, if $f$ is a degree $m$ polynomial then $f(A) = k_0I + k_1A^1 +...+k_mA^m$. Since $A^p$ is upper triangular for all nonnegative integers $p$, the result of multiplying an upper triangular matrix by a scalar is upper triangular, and the sum of two upper triangular matrices is upper triangular, we conclude that $f(A)$ must be an upper triangular matrix. Next we note that if $\lambda$ is an eigenvalue of $A$ with corresponding eigenvalue $v$, then since $Av = \lambda v$ we have
+
+$$kA^pv = k\lambda A^{p-1}v = k\lambda A^{p-2}Av = k\lambda^2 A^{p-2}v = ... = k\lambda^p v \quad k \in \mathbb{K} \, ,p \in \mathbb{N} \;.$$
+
+This shows that $k\lambda^p$ is an eigenvalue of $kA^p$. Then for $f(A) = k_0I + k_1A + ... + k_mA^m$, if $\lambda$ is an eigenvalue of $A$ with corresponding eigenvalue $v$, then
+
+$$f(A)v = k_0I + k_1A+...+k_mA^m = k_0\lambda^0v + k_1\lambda v + ... +k_m \lambda^m v = (k_0 + k_1\lambda + k_m\lambda^m)v \;.$$ This implies that the eigenvalues of $f(A)$ are $f(\lambda_i)$, where each $\lambda_i$ is one of the $n$ diagonal elements of $A$.\\
+
+$\bullet$\\
+
+Let $A$ be a nonsingular matrix and let $\lambda$ be an eigenvalue of $A$. Then for an eigenvector $v$ corresponding to the eigenvalue $\lambda$ we have $Av = \lambda v$. Since $A$ is invertible, we have $\lambda \neq 0$ and
+
+$$A^{-1}Av = A^{-1}\lambda v$$
+$$v = \lambda A^{-1} v$$
+$$\frac{1}{\lambda} v = A^{-1} v \;.$$
+
+Therefore, if $\lambda$ is an eigenvalue of $A$ then $\lambda^{-1}$ is an eigenvalue of $A^{-1}$.\\
+
+$\bullet$\\
+
+Suppose $A$ is a $3 \times 3$ upper triangular matrix with eigenvalues $-1, 0,1$. Since $0$ is an eigenvalue of $A$, $A$ is not invertible. Consider however, the matrix $A^3 - 3A^2 + I$. \\
+
+Using our results above, the eigenvalues of $A^3 - 3A^2 + I$ are $$1^3 -3(1)^2+ 1 = 1-3+1 = -1$$
+$$0^3 - 3(0)^2 + 1 = 1$$
+$$(-1)^3 - 3(-1)^2 + 1 = -3 \;.$$
+
+Note that since none of the eigenvalues of $A^3-3A^2 + I$ are 0, then the matrix $A^3 - 3A^2 + I$ is invertible.\\
+
+Therefore the eigenvalues of $(A^3 - 3A^2 + I)^{-1}$ are $-1, 1$ and $-1/3$. 
+
+\section{}
+Let $A$ be an $n \times n$ matrix with eigenvalues $1,2,$ and $3$ with corresponding eigenvalues $v_1, v_2,$ and $v_3$. In general for an $n \times n$ matrix with eigenvalue $\lambda$ and corresponding eigenvector $v$,
+
+$$Av = \lambda v \implies A^{100}v = \lambda A^{99} v = \lambda^2 A^{98} v = ... = \lambda^{100} v\;. $$
+Therefore $\lambda^{100}$ is an eigenvalue of $A^{100}$. \\
+
+
+So we conclude that $1, 2^{100},$ and $3^{100}$ are eigenvalues of $A^{100}$. Let $T : \mathbb{R}^n \rightarrow \mathbb{R}^n$ be the transformation given by $T(x) = Ax$. Then there exists a basis $\mathcal{B}$ such that $[T]_{\mathcal{B} \rightarrow \mathcal{B}}$ is an upper triangular matrix. The eigenvalues of the transformation $T$ are the same as the matrix $A$ since $A$ is one matrix representation of the transformation $T$ and the eigenvalues of $T$ do not depend on the choice of basis used in the representation of $T$. By the previous exercise, the eigenvalues of the matrix $([T]_{\mathcal{B} \rightarrow \mathcal{B}})^{100}$ are found by applying the polynomial $f(\lambda) = \lambda^{100}$ to each eigenvalue of $[T]_{\mathcal{B} \rightarrow \mathcal{B}}$. Thus the eigenvalues of  $([T]_{\mathcal{B} \rightarrow \mathcal{B}})^{100}$ are just $1, 2^{100}$, and $3^{100}$. Since these must be the same set of eigenvalues as the matrix $A^{100}$, we conclude that $A^{100}$ does not have any eigenvalues aside from $1,2^{100}$, and $3^{100}$.
+\end{document}
